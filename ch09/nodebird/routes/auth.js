@@ -19,7 +19,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     await User.create({
       email,
       nick,
-      password: has,
+      password: hash,
     })
     return res.redirect('/')
   } catch (error) {

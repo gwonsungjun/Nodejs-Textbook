@@ -4,7 +4,7 @@ var User = require('../schemas/user')
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  User.find({})
+  User.findOne({})
     .then((users) => {
       res.json(users)
     })

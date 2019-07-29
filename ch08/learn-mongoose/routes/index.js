@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  User.find({})
+  User.findOne({})
     .then((users) => {
       res.render('mongoose', { users })
     })
