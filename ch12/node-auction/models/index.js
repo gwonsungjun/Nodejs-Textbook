@@ -18,7 +18,7 @@ db.Good.belongsTo(db.User, {as: 'owner'})
 db.Good.belongsTo(db.User, {as: 'sold'})
 db.User.hasMany(db.Auction)
 db.Good.hasMany(db.Auction)
-db.Auction.belongTo(db.User)
-db.Auction.belongTo(db.Good)
+db.Auction.belongsTo(db.User)
+db.Auction.belongsTo(db.Good)
 
 module.exports = db;

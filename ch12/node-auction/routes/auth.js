@@ -6,11 +6,11 @@ const {User} = require('../models')
 
 const router = express.Router()
 
-router.get('/join', isNotLoggedIn, async (req, res, next) => {
-  const { email, nick, password, money } = req.body
+router.post('/join', isNotLoggedIn, async (req, res, next) => {
+  const {email, nick, password, money} = req.body
   try {
-    const exUser = await User.find({where: email})
-    if(exUser) {
+    const exUser = await User.findOne({where: {email}})
+    if (exUser) {
       req.flash('joinError', '이미 가입된 이메일입니다.')
       return res.redirect('/join')
     }
@@ -28,7 +28,7 @@ router.get('/join', isNotLoggedIn, async (req, res, next) => {
   }
 })
 
-router.get('/login', isNotLoggedIn, (req, res, next) => {
+router.post('/login', isNotLoggedIn, (req, res, next) => {
   passport.authenticate('local', (authError, user, info) => {
     if (authError) {
       console.error(authError)

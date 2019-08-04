@@ -3,7 +3,7 @@ exports.isLoggedIn = (req, res, next) => {
     next()
   } else {
     req.flash('loginError', '로그인이 필요합니다')
-    req.redirect('/')
+    res.redirect('/')
   }
 }
 
